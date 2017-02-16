@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test文件</title>
+	<style type="text/css">
+		#box{
+			width: 400px;
+			margin: 0 auto;
+		}
+		#box li{
+			width: 100%;
+			height: auto;
+			list-style: none;
+		}
+		#box li img{
+			width: 100%;
+			height: auto;
+			/*float: left;*/
+		}
+
+		p{
+			width: 100px;
+			height: 20px;
+			overflow: hidden;
+		}
+		#box2{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, neque.</p>
+	<div id="test"></div>
+	<ul id="box">
+		<li>
+			<img src="img/1.jpg">
+		</li>
+	</ul>
+	<div id="box2"></div>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+	<script type="text/javascript">
+		function log(obj){
+			// console.log(obj);	
+		}
+		function getId(id){
+			document.getElementById(id);
+		}
+		function getTag(tag){
+			document.getElementsByTagName(tag);
+		}
+		///////////////////////////////////////////////
+		/////////分割线/////////////////////////////////
+
+		var box = document.getElementById("box");
+		window.onload = function(){
+			for(var i = 0;i<5;i++)
+			{
+				createImage();
+			}
+		}
+		function createImage(){
+			var li = document.createElement("li");
+			var num = Math.ceil(Math.random()*10);
+			li.innerHTML = "<img src='img/"+num+".jpg' >";
+			li.setAttribute("class","pic");
+			li.setAttribute("style","border: 1px red solid");
+			// console.log(li);
+			box.appendChild(li);
+		}
+		var arr = [1,2,3];
+		var a = arr.reverse();
+		console.log(arr);
+		console.log(a);
+		// document.onscroll = function(){
+		// 	var browserHeight = document.documentElement.clientHeight;
+		// 	var documentHeight = document.documentElement.offsetHeight;
+		// 	var scrollTop = document.documentElement.scrollTop || window.pageYOffset;
+		// 	console.log(browserHeight,documentHeight,scrollTop);
+		// 	console.log(documentHeight - browserHeight - scrollTop);
+		// 	if (documentHeight - browserHeight - scrollTop<80) {
+		// 		createImage();
+		// 	}
+		// }
+		// $(document).ready(function() {
+		// 	alert("ready1");	
+		// });	
+		// $(document).ready(function() {
+		// 	alert("ready2");
+		// });
+		// window.onload = function(){alert(1)};
+		// window.onlaod = function(){alert(2)};
+			
+		// $("#box").hover(function(){console.log("in");},function(){console.log("out");});		
+
+		$("#test").css("width","100px").css("height","100px").css("backgroundColor","red");
+		document.onkeypress =function(e){
+			console.log(e);
+		} 
+			var start = null;
+			var element = document.getElementById('test');
+			element.style.position = 'absolute';
+
+			function step(timestamp) {
+			  // console.log(timestamp,start);
+			  if (!start) start = timestamp;
+			  var progress = timestamp - start;
+			  element.style.left = Math.min(progress / 10, 200) + 'px';
+			  if (progress < 2000) {
+			    window.requestAnimationFrame(step);
+			  }
+			}
+
+			window.requestAnimationFrame(step);
+			// window.requestAnimationFrame(myfun);
+			// function myfun(sep){
+			// 	console.log(sep);
+			// }
+			console.log(document);
+			var a = b = 6;
+			console.log(a,b);
+			// alert(null == undefined);
+
+			var index = 0;
+			// var t = setInterval(function (){
+			// 	index++;
+			// 	console.log(index);
+			// 	if (index == 10) {
+			// 		clearInterval(t);
+			// 	}
+			// },1000);
+
+			function set(ti){
+				index++;
+				console.log(index);
+				clearTimeout(ti);
+				if (index == 10) {
+					return;
+				}
+				ti = setTimeout("set(ti)",1000);
+			}
+			var ti = setTimeout("set(ti)",1000);
+
+	</script>
+</body>
+
+</html>
